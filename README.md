@@ -2,4 +2,4 @@
 Integrantes: Felipe Rojas Prado, Juan Sebastian Gonzalez, Juan Felipe Jojoa Crespo
 
 
-Profesor: Nicolas Echeverry
+Profesor: Nicolás Javier Salazar Echeverry
