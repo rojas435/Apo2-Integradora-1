@@ -3,8 +3,6 @@ import java.util.Scanner;
 import model.*;
 
 
-import model.GameController;
-
 public class Game {
     private Scanner reader;
 	private GameController controller;
@@ -82,6 +80,31 @@ public class Game {
 	}
 
 	public void init(){
+		System.out.println("Dime que la cantidad de filas que deseas para el tablero: ");
+		int rows = reader.nextInt();
+		reader.nextLine();
+
+		System.out.println("Dime la cantidad de columnas que deseas para el tablero: ");
+		int columns = reader.nextInt();
+		reader.nextLine();
+
+		System.out.println("Dime cuantos toboganes deseas para este juego: ");
+		int slides = reader.nextInt();
+		reader.nextLine();
+		System.out.println("Dime cuantas escaleras deseas: ");
+		int stairs = reader.nextInt();
+		controller.initBoard();
+		reader.nextLine();
+
+		System.out.println("Jugador,"); //Aqui se pone el +Jugador
+		System.out.print("\nElije una opcion\n"+
+		"1. Tirar dado\n"+
+		"2. Ver escaleras y serpientes\n"+
+		"Opcion: ");
+		int option = reader.nextInt();
+		controller.inGame(option);
+
+
 
 	}
 }
