@@ -20,6 +20,7 @@ public class Game {
 			do{
 				option = main.getOptionShowMenu(); 
 				main.executeOption(option);
+				int felipe = 1;
 
 			}while(option != 0);
 
