@@ -3,18 +3,18 @@ import java.util.Scanner;
 import model.*;
 
 
-public class Game {
+public class Main {
     private Scanner reader;
 	private GameController controller;
 	
 
-	public Game() {
+	public Main() {
 		reader = new Scanner(System.in); 
         controller = new GameController();
 	}
 
 	public static void main(String[] args) {
-			Game main = new Game(); 
+			Main main = new Main(); 
 
 			int option = -1; 
 			do{
@@ -91,9 +91,11 @@ public class Game {
 		System.out.println("Dime cuantos toboganes deseas para este juego: ");
 		int slides = reader.nextInt();
 		reader.nextLine();
+
 		System.out.println("Dime cuantas escaleras deseas: ");
 		int stairs = reader.nextInt();
 		controller.initBoard();
+        
 		reader.nextLine();
 
 		System.out.println("Jugador,"); //Aqui se pone el +Jugador

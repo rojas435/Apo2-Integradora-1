@@ -10,7 +10,10 @@ public class GameController {
 
     public void inGame(int option){
         switch(option){
+
             case 1:
+
+                
 
                 break;
 
@@ -19,7 +22,9 @@ public class GameController {
                 break;
 
             default:
-                System.out.println("Opcion invalida, intenta denuevo");
+
+                System.out.println("Opcion invalida, intenta de nuevo");
+                
             break;        
         }
     }
