@@ -23,4 +23,9 @@ public class GameController {
             break;        
         }
     }
+
+    public void calculateScore(double time){
+        double score =0;
+        score = (600 - time)/6;
+    }
 }
