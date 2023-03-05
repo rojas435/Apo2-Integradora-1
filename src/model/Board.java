@@ -1,26 +1,33 @@
 package model;
 
 public class Board {
-    public int size;
-    public Node init;
+    private int sizeX;
 
-    public Board(int size) {
-        this.size = size;
-        this.init = null;
+    private int sizeY;
+
+    private int snakeNum;
+
+    private int laddersNum;
+
+    private Node start;
+
+    private Node end;
+
+
+
+
+    public Board(int rows, int columnas, int snakes, int ladders) {
+        this.sizeX = columnas;
+        this.sizeY = rows;
+        this.snakeNum = snakes;
+        this.laddersNum = ladders;
+        this.start = null;
         createBoard();
     }
 
     private void createBoard() {
         Node previousA = null;
-        for (int i = 1; i <= size; i++) {
-            Node newnode = new Node(i);
-            if (previousA != null) {
-                previousA.setNext(newnode);
-                newnode.setPrevious(previousA);
-            } else {
-                init = newnode;
-            }
-            previousA = newnode;
-        }
+        
     }
+
 }

@@ -1,9 +1,14 @@
 package model;
 
-public class Ladders {
+public class Ladders extends Node{
     private int id;
     private String display="L";
     private Node connect;
+
+    public Ladders(int value, int id) {
+        super(value);
+        this.id = id;
+    }
 
     public Node getConnect() {return connect;}
 

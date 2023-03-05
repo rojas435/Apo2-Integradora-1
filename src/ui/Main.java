@@ -14,7 +14,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-			Main main = new Main(); 
+			Main main = new Main();
 
 			int option = -1; 
 			do{
@@ -24,14 +24,6 @@ public class Main {
 			}while(option != 0);
 
 		}
-
-	public Scanner getReader() {
-		return this.reader;
-	}
-
-	public void setReader(Scanner reader) {
-		this.reader = reader;
-	}
 
 	public int getOptionShowMenu(){
 			int option = 0; 
@@ -89,24 +81,27 @@ public class Main {
 		reader.nextLine();
 
 		System.out.println("Dime cuantos toboganes deseas para este juego: ");
-		int slides = reader.nextInt();
+		int snakes = reader.nextInt();
 		reader.nextLine();
 
 		System.out.println("Dime cuantas escaleras deseas: ");
-		int stairs = reader.nextInt();
-		controller.initBoard();
-        
-		reader.nextLine();
+		int ladders = reader.nextInt();
 
+		controller.createBoard(rows, columns, snakes, ladders);
+	}
+
+	public int playMenu(int player, int numPlayers){
+		if(player>numPlayers-1){
+			player=0;
+		}
 		System.out.println("Jugador,"); //Aqui se pone el +Jugador
 		System.out.print("\nElije una opcion\n"+
-		"1. Tirar dado\n"+
-		"2. Ver escaleras y serpientes\n"+
-		"Opcion: ");
+				"1. Tirar dado\n"+
+				"2. Ver escaleras y serpientes\n"+
+				"Opcion: ");
 		int option = reader.nextInt();
-		controller.inGame(option);
-
-
-
+		controller.inGame(option, player);
+		return playMenu(player+1, numPlayers);
 	}
+
 }

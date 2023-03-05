@@ -1,15 +1,18 @@
 package model; 
 
-public class Node{
+public abstract class Node{
 
 	private int id;
     private String display;
+
+	private Node saved;
 	private Node next;
 	private Node previous;
 	private Node up;
     private Node down;
 
 	public Node(int value) {
+		super();
 		this.id = value;
         this.display = "[" + value + "]" ;
 	}
