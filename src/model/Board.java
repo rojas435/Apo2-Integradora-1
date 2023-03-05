@@ -13,14 +13,14 @@ public class Board {
     private void createBoard() {
         Box previousA = null;
         for (int i = 1; i <= size; i++) {
-            Box newNode = new Box(i);
+            Box newBox = new Box(i);
             if (previousA != null) {
-                previousA.next = newNode;
-                newNode.previous = previousA;
+                previousA.setNext(newBox);
+                newBox.setPrevious(previousA);
             } else {
-                init = newNode;
+                init = newBox;
             }
-            previousA = newNode;
+            previousA = newBox;
         }
     }
 }
