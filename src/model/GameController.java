@@ -4,28 +4,12 @@ import java.util.Random;
 public class GameController {
 
 
-    public void initBoard(){
+
+    public void inGame(int option, int player){
 
     }
 
-    public void inGame(int option){
-        switch(option){
+    public void createBoard(int rows, int columns, int snakes, int ladders){
 
-            case 1:
-
-                
-
-                break;
-
-            case 2:
-
-                break;
-
-            default:
-
-                System.out.println("Opcion invalida, intenta de nuevo");
-                
-            break;        
-        }
     }
 }
