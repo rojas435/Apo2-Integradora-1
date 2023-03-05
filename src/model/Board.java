@@ -2,7 +2,7 @@ package model;
 
 public class Board {
     public int size;
-    public Box init;
+    public Node init;
 
     public Board(int size) {
         this.size = size;
@@ -11,16 +11,16 @@ public class Board {
     }
 
     private void createBoard() {
-        Box previousA = null;
+        Node previousA = null;
         for (int i = 1; i <= size; i++) {
-            Box newBox = new Box(i);
+            Node newnode = new Node(i);
             if (previousA != null) {
-                previousA.setNext(newBox);
-                newBox.setPrevious(previousA);
+                previousA.setNext(newnode);
+                newnode.setPrevious(previousA);
             } else {
-                init = newBox;
+                init = newnode;
             }
-            previousA = newBox;
+            previousA = newnode;
         }
     }
 }
