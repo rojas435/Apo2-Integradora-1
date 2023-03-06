@@ -1,6 +1,6 @@
 package model; 
 
-public abstract class Node{
+public class Node{
 
 	private int id;
     private String display;
@@ -8,8 +8,6 @@ public abstract class Node{
 	private Node saved;
 	private Node next;
 	private Node previous;
-	private Node up;
-    private Node down;
 
 	public Node(int value) {
 		super();
@@ -20,10 +18,6 @@ public abstract class Node{
 	public String getDisplay() {return display;}
 
 	public void setDisplay(String display) {this.display = display;}
-
-	public Node getDown() {return down;}
-
-	public void setDown(Node down) {this.down = down;}
 
 	public int getId() {return id;}
 
@@ -37,9 +31,6 @@ public abstract class Node{
 
 	public void setPrevious(Node previous) {this.previous = previous;}
 
-	public Node getUp() {return up;}
-
-	public void setUp(Node up) {this.up = up;}
 
 	@Override
 	public String toString(){
