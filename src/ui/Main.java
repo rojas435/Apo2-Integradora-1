@@ -101,6 +101,9 @@ public class Main {
 				"Opcion: ");
 		int option = reader.nextInt();
 		controller.inGame(option, player);
+		if(option==2){
+			return playMenu(player, numPlayers);
+		}
 		return playMenu(player+1, numPlayers);
 	}
 

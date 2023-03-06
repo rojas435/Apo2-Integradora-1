@@ -20,9 +20,6 @@ public class Board {
 
     private ArrayList<Integer> positionArrayL;
 
-
-
-
     public Board(int rows, int columnas, int snakes, int ladders) {
         this.sizeX = columnas;
         this.sizeY = rows;
