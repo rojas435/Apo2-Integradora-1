@@ -22,12 +22,43 @@ public class Board {
         this.snakeNum = snakes;
         this.laddersNum = ladders;
         this.start = null;
-        createBoard();
+        createBoard((columnas*rows), 0);
     }
 
-    private void createBoard() {
-        Node previousA = null;
-        
+    private void createBoard(int boardLimit, int boardNodeCounter) {
+        boardNodeCounter+=1;
+        if(boardNodeCounter<=boardLimit){
+            if(boardNodeCounter==snakes){
+                Snakes snake = new Snakes(boardNodeCounter);
+
+            } else if(boardNodeCounter==ladders){
+                Ladders ladder = new Ladders(boardNodeCounter);
+            } else {
+                Node node = new Node(boardNodeCounter);
+                addNode(node);
+            }
+            createBoard(boardLimit, boardNodeCounter);
+        }
+        return;
+    }
+
+    private void addNode(Node node){
+        if(start==null && end==null){
+            start = node;
+            end = node;
+        } else{
+            end.setNext(node);
+            node.setPrevious(end);
+            end = node;
+        }
+    }
+
+    private void createSnakePosition(){}
+
+    private void createLadderPosition(){}
+
+    private void boardPrint(){
+
     }
 
 }

@@ -1,6 +1,7 @@
 package model;
 import java.util.Random;
 
+
 public class GameController {
 
 
@@ -10,6 +11,8 @@ public class GameController {
     }
 
     public void createBoard(int rows, int columns, int snakes, int ladders){
+        Board board = new Board(rows, columns, snakes, ladders);
 
+        return;
     }
 }
