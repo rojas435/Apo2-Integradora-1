@@ -6,9 +6,12 @@ public class Snakes extends Node{
     private String display;
     private Node connect;
 
+    private boolean connected;
+
     public Snakes(int value) {
         super(value);
         this.display = "[S]";
+        this.connected = false;
     }
 
     public Node getConnect() {return connect;}
@@ -19,4 +22,7 @@ public class Snakes extends Node{
 
     public void setDisplay(String display) {this.display = display;}
 
+    public boolean isConnected() {return connected;}
+
+    public void setConnected(boolean connected) {this.connected = connected;}
 }
