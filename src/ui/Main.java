@@ -86,6 +86,7 @@ public class Main {
 
 		System.out.println("Dime cuantas escaleras deseas: ");
 		int ladders = reader.nextInt();
+		reader.nextLine();
 
 		controller.createBoard(rows, columns, snakes, ladders);
 	}
