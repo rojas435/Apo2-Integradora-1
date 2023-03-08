@@ -1,6 +1,6 @@
 package model;
 
-public class positionListS {
+public class positionListL {
     private Node head;
     private Node tail;
 
@@ -9,8 +9,8 @@ public class positionListS {
         if(this.head == null && this.tail == null){
             this.head = node;
             this.tail = node;
-            head.setNext(node);
-            tail.setPrevious(node);
+            this.head.setNext(node);
+            this.tail.setPrevious(node);
         } else {
             this.tail.setNext(node);
             node.setPrevious(tail);
@@ -24,7 +24,7 @@ public class positionListS {
         return searchNode(head, Svalue);
     }
 
-    private boolean searchNode(Node current, int Svalue){
+    public boolean searchNode(Node current, int Svalue){
         if(this.head == null && this.tail == null){
             return false;
         }
