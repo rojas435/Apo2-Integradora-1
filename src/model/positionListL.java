@@ -4,7 +4,7 @@ public class positionListL {
     private Node head;
     private Node tail;
 
-    public void addLast(Node node){
+    public void addLast(Ladders node){
         //caso base
         if(this.head == null && this.tail == null){
             this.head = node;
@@ -20,7 +20,7 @@ public class positionListL {
         return searchNode(head, Svalue);
     }
 
-    public boolean searchNode(Node current, int Svalue){
+    private boolean searchNode(Node current, int Svalue){
         if(current==null){
             return false;
         }
@@ -32,8 +32,7 @@ public class positionListL {
         }else {
         }
 
-        searchNode(current.getNext(), Svalue);
-        return false;
+        return searchNode(current.getNext(), Svalue);
     }
 
     public Node getHead() {

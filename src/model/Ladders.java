@@ -1,11 +1,13 @@
 package model;
 
+import jdk.dynalink.NoSuchDynamicMethodException;
 public class Ladders extends Node{
-    private String display="[L]";
+    private String display;
     private Node connect;
 
     public Ladders(int value) {
         super(value);
+        this.display = "[L]";
     }
 
     public Node getConnect() {return connect;}

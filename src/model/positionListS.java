@@ -4,7 +4,7 @@ public class positionListS {
     private Node head;
     private Node tail;
 
-    public void addLast(Node node){
+    public void addLast(Snakes node){
         //caso base
         if(this.head == null && this.tail == null){
             this.head = node;
@@ -32,8 +32,7 @@ public class positionListS {
         }else {
         }
 
-        searchNode(current.getNext(), Svalue);
-        return false;
+        return searchNode(current.getNext(), Svalue);
     }
 
 
