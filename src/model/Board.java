@@ -22,6 +22,8 @@ public class Board {
 
    private positionListL listL = new positionListL();
 
+    Random rand = new Random();
+
 
     public Board(int rows, int columnas, int snakes, int ladders) {
         this.sizeX = columnas;
@@ -29,8 +31,8 @@ public class Board {
         this.snakeNum = snakes;
         this.laddersNum = ladders;
         this.start = null;
-        createSPosition(snakes*2,(columnas*rows), 0);
-        createLPosition((ladders*2)+1, (columnas*rows), 0);
+        createSPosition((snakes*2),(columnas*rows), 0);
+        createLPosition((ladders*2), (columnas*rows), 0);
         createBoard((columnas*rows), 1);
         boardPrint(columnas);
     }
@@ -69,17 +71,17 @@ public class Board {
         if(snake==counter){
             return;
         }
-        Random rand = new Random();
         int upperbound = positions;
         int int_random = rand.nextInt(upperbound);
-        if(int_random!=0 && int_random!=1 && int_random!=positions-1){
+        if(int_random!=0 || int_random!=1 || int_random!=positions-1){
             if(listS.getHead()==null){
                 System.out.println(int_random);
-                listS.addLast(new Node(int_random));
+                listS.addLast(new Snakes(int_random));
+                createSPosition(snake, positions, counter+1);
             }else {
                 if(listS.searchNode(int_random)==false){
                     System.out.println(int_random);
-                    listS.addLast(new Node(int_random));
+                    listS.addLast(new Snakes(int_random));
                     createSPosition(snake, positions, counter+1);
                 }else{
                     createSPosition(snake, positions, counter);
@@ -96,20 +98,18 @@ public class Board {
         if(ladder==counter){
             return;
         }
-        Random rand = new Random();
         int upperbound = positions;
         int int_random = rand.nextInt(upperbound);
-        if(int_random!=0 && int_random!=1 && int_random!=positions-1) {
+        if(int_random!=0 || int_random!=1 || int_random!=positions-1) {
             if (listS.searchNode(int_random) == false) {
                 if (listL.searchNode(int_random) == false) {
                     System.out.println(int_random);
-                    listL.addLast(new Node(int_random));
+                    listL.addLast(new Ladders(int_random));
                     createLPosition(ladder, positions, counter+1);
-                    return;
                 }else {
                     createLPosition(ladder,positions,counter);
-                    return;
                 }
+                return;
             } else {
                 createLPosition(ladder,positions,counter);
                 return;
@@ -125,14 +125,15 @@ public class Board {
         return;
     }
     private void boardPrint(Node current, int counter, int columns, String print){
-        if(current==null){
-            return;
-        }
+
         counter-=1;
         if(counter<0){
             System.out.println(print);
             print="";
             counter=columns-1;
+        }
+        if(current==null){
+            return;
         }
         if(current instanceof Snakes){
             print += current.getDisplay()+" ";
