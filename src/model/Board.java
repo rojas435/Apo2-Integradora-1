@@ -34,6 +34,7 @@ public class Board {
         createSPosition((snakes*2),(columnas*rows), 0);
         createLPosition((ladders*2), (columnas*rows), 0);
         createBoard((columnas*rows), 1);
+        connectNodes((snakes*2), (ladders*2);
         boardPrint(columnas);
     }
 
@@ -147,6 +148,99 @@ public class Board {
         if(current==start){
             return;
         }
+    }
+
+    private void connectNodes(int snakes, int ladders){
+        findNodeS(end, snakes);
+        findNodeL(start, ladders);
+    }
+    private void findNodeS(Node current, int amount){
+        if(amount==0){
+            return;
+        }
+        if(current==null){
+            return;
+        }
+        if(this.start == null && this.end == null){
+            return;
+        }
+        if(current instanceof Snakes){
+            if(((Snakes) current).isConnected()==false){
+                ((Snakes) current).setConnect(findNodeS2(current.getNext(), random(amount), 1));
+                ((Snakes) current).setConnected(true);
+                findNodeS(current.getPrevious(), amount-2);
+            }
+        }
+        findNodeS(current.getPrevious(), amount);
+        return;
+    }
+
+    private void findNodeL(Node current, int amount){
+        if(amount==0){
+            return;
+        }
+        if(current==null){
+            return;
+        }
+        if(this.start == null && this.end == null){
+            return;
+        }
+        if(current instanceof Ladders){
+            if(((Ladders) current).isConnected()==false){
+                ((Ladders) current).setConnect(findNodeL2(current.getNext(), random(amount), 1));
+                ((Ladders) current).setConnected(true);
+                findNodeL(current.getNext(), amount-2);
+            }
+        }
+        findNodeL(current.getNext(), amount);
+        return;
+    }
+
+    private int random(int amount){
+        int upperbound = amount-1;
+        int int_random = rand.nextInt(upperbound);
+        if(int_random != 0){
+            return int_random;
+        }
+        return random(amount);
+    }
+
+    private Node findNodeS2(Node current, int snake, int counter){
+        if(current==null){
+            return null;
+        }
+        if(this.start == null && this.end == null){
+            return null;
+        }
+        if(current instanceof Snakes){
+            if(((Snakes) current).isConnected()==false){
+                if(counter == snake){
+                    ((Snakes) current).setConnected(true);
+                    return ((Snakes) current);
+                }
+                return findNodeS2(current.getPrevious(), snake, counter+1);
+            }
+        }
+        return findNodeS2(current.getPrevious(), snake, counter);
+    }
+
+    private Node findNodeL2(Node current, int ladder, int counter){
+        if(current==null){
+            return null;
+        }
+        if(this.start == null && this.end == null){
+            return null;
+        }
+        if(current instanceof Ladders){
+            if(((Ladders) current).isConnected()==false){
+                if(counter == ladder){
+                    ((Ladders) current).setConnected(true);
+                    return ((Ladders) current);
+                }
+                return findNodeL2(current.getNext(), ladder, counter+1);
+            }
+        }
+        return findNodeL2(current.getNext(), ladder, counter);
     }
 
 }
