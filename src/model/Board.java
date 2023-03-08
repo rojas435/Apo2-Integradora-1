@@ -18,9 +18,9 @@ public class Board {
 
     private Node end;
 
-    positionListS listS = new positionListS();
+   private positionListS listS = new positionListS();
 
-    positionListL listL = new positionListL();
+   private positionListL listL = new positionListL();
 
 
     public Board(int rows, int columnas, int snakes, int ladders) {
@@ -30,7 +30,7 @@ public class Board {
         this.laddersNum = ladders;
         this.start = null;
         createSPosition(snakes*2,(columnas*rows), 0);
-        createLPosition(ladders*2, (columnas*rows), 0);
+        createLPosition((ladders*2)+1, (columnas*rows), 0);
         createBoard((columnas*rows), 1);
         boardPrint(columnas);
     }
@@ -53,15 +53,15 @@ public class Board {
     }
 
     private void addNode(Node node){
-        if(start==null && end==null){
-            start = node;
-            end = node;
-            start.setNext(node);
-            end.setPrevious(node);
-        } else{
-            end.setNext(node);
-            node.setPrevious(end);
-            end = node;
+        if(node instanceof Ladders || node instanceof Snakes || node instanceof Node){
+            if(start==null && end==null){
+                start = node;
+                end = node;
+            } else{
+                end.setNext(node);
+                node.setPrevious(end);
+                end = node;
+            }
         }
     }
 
@@ -74,8 +74,8 @@ public class Board {
         int int_random = rand.nextInt(upperbound);
         if(int_random!=0 && int_random!=1 && int_random!=positions-1){
             if(listS.getHead()==null){
-                listS.addLast(new Node(int_random));
                 System.out.println(int_random);
+                listS.addLast(new Node(int_random));
             }else {
                 if(listS.searchNode(int_random)==false){
                     System.out.println(int_random);
@@ -121,18 +121,18 @@ public class Board {
     }
 
     private void boardPrint(int columns){
-        boardPrint(start, 0, columns, "");
+        boardPrint(end, columns, columns, "");
         return;
     }
     private void boardPrint(Node current, int counter, int columns, String print){
         if(current==null){
             return;
         }
-        counter+=1;
-        if(counter>columns){
+        counter-=1;
+        if(counter<0){
             System.out.println(print);
             print="";
-            counter=1;
+            counter=columns-1;
         }
         if(current instanceof Snakes){
             print += current.getDisplay()+" ";
@@ -142,8 +142,10 @@ public class Board {
             print += current.getDisplay()+" ";
         }
 
-        boardPrint(current.getNext(), counter, columns, print);
-        return;
+        boardPrint(current.getPrevious(), counter, columns, print);
+        if(current==start){
+            return;
+        }
     }
 
 }

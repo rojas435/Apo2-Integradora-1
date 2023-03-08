@@ -1,7 +1,7 @@
 package model;
 
 public class Ladders extends Node{
-    private String display="[ L ]";
+    private String display="[L]";
     private Node connect;
 
     public Ladders(int value) {

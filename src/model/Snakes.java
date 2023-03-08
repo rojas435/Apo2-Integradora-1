@@ -3,7 +3,7 @@ package model;
 import jdk.dynalink.NoSuchDynamicMethodException;
 
 public class Snakes extends Node{
-    private String display="[ S ]";
+    private String display="[S]";
     private Node connect;
 
     public Snakes(int value) {
