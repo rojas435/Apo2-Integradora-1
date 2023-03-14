@@ -34,7 +34,7 @@ public class Board {
         createSPosition((snakes*2),(columnas*rows), 0);
         createLPosition((ladders*2), (columnas*rows), 0);
         createBoard((columnas*rows), 1);
-        connectNodes((snakes*2), (ladders*2);
+        connectNodes((snakes*2), (ladders*2));
         boardPrint(columnas);
     }
 
@@ -76,9 +76,14 @@ public class Board {
         int int_random = rand.nextInt(upperbound);
         if(int_random!=0 || int_random!=1 || int_random!=positions-1){
             if(listS.getHead()==null){
-                System.out.println(int_random);
-                listS.addLast(new Snakes(int_random));
-                createSPosition(snake, positions, counter+1);
+                if(int_random == 0){
+                    createSPosition(snake, positions, counter);
+                } else {
+                    System.out.println(int_random);
+                    listS.addLast(new Snakes(int_random));
+                    createSPosition(snake, positions, counter+1);
+                }
+                return;
             }else {
                 if(listS.searchNode(int_random)==false){
                     System.out.println(int_random);
@@ -87,6 +92,7 @@ public class Board {
                 }else{
                     createSPosition(snake, positions, counter);
                 }
+                return;
             }
         }else {
             createSPosition(snake,positions,counter);
@@ -104,13 +110,16 @@ public class Board {
         if(int_random!=0 || int_random!=1 || int_random!=positions-1) {
             if (listS.searchNode(int_random) == false) {
                 if (listL.searchNode(int_random) == false) {
-                    System.out.println(int_random);
-                    listL.addLast(new Ladders(int_random));
-                    createLPosition(ladder, positions, counter+1);
+                    if(int_random == 0){
+                        createLPosition(ladder, positions, counter);
+                    }else{
+                        System.out.println(int_random);
+                        listL.addLast(new Ladders(int_random));
+                        createLPosition(ladder, positions, counter+1);
+                    }
                 }else {
                     createLPosition(ladder,positions,counter);
                 }
-                return;
             } else {
                 createLPosition(ladder,positions,counter);
                 return;
@@ -166,7 +175,7 @@ public class Board {
         }
         if(current instanceof Snakes){
             if(((Snakes) current).isConnected()==false){
-                ((Snakes) current).setConnect(findNodeS2(current.getNext(), random(amount), 1));
+                ((Snakes) current).setConnect(findNodeS2(current.getNext(), random(amount+1), 1));
                 ((Snakes) current).setConnected(true);
                 findNodeS(current.getPrevious(), amount-2);
             }
@@ -187,7 +196,7 @@ public class Board {
         }
         if(current instanceof Ladders){
             if(((Ladders) current).isConnected()==false){
-                ((Ladders) current).setConnect(findNodeL2(current.getNext(), random(amount), 1));
+                ((Ladders) current).setConnect(findNodeL2(current.getNext(), random(amount+1), 1));
                 ((Ladders) current).setConnected(true);
                 findNodeL(current.getNext(), amount-2);
             }
