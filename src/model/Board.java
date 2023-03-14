@@ -252,4 +252,6 @@ public class Board {
         return findNodeL2(current.getNext(), ladder, counter);
     }
 
+    
+
 }

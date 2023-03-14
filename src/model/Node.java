@@ -13,9 +13,13 @@ public class Node{
 		super();
 		this.id = value;
         this.display = "[" + value + "]" ;
+		this.next = null;
+		this.previous = null;
 	}
 
 	public String getDisplay() {return display;}
+
+
 
 	public void setDisplay(String display) {this.display = display;}
 
